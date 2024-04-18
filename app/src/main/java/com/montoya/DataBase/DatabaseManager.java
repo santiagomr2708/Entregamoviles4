@@ -11,26 +11,26 @@ import androidx.annotation.NonNull;
 
 public class DatabaseManager {
 
-    private ArrayList<HashMap<String, String>> listaDeLibros = new ArrayList<>();
+    private ArrayList<HashMap<String, String>> listaDeAutos = new ArrayList<>();
 
-    public ArrayList<HashMap<String, String>> getListaDeLibros() {
-        return listaDeLibros;
+    public ArrayList<HashMap<String, String>> getListaDeAutos() {
+        return listaDeAutos;
     }
 
-    public void cargarLibrosDeDB(final AdaptadorLibros adaptadorLibros) {
+    public void cargarAutosDeDB(final AdaptadorAutos adaptadorAutos) {
         //instantiate database connection
         FirebaseDatabase baseDeDatos = FirebaseDatabase.getInstance();
-        DatabaseReference referenciaLibros = baseDeDatos.getReference("libros");
+        DatabaseReference referenciaAutos = baseDeDatos.getReference("Autos");
 
-        referenciaLibros.addValueEventListener(new ValueEventListener() {
+        referenciaAutos.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                listaDeLibros.clear();
-                for (DataSnapshot libroSnapshot: dataSnapshot.getChildren()) {
-                    HashMap<String, String> libro = (HashMap<String, String>) libroSnapshot.getValue();
-                    listaDeLibros.add(libro);
+                listaDeAutos.clear();
+                for (DataSnapshot AutosSnapshot: dataSnapshot.getChildren()) {
+                    HashMap<String, String> Auto = (HashMap<String, String>) AutosSnapshot.getValue();
+                    listaDeAutos.add(Auto);
                 }
-                adaptadorLibros.notifyDataSetChanged();
+                adaptadorAutos.notifyDataSetChanged();
             }
 
             @Override

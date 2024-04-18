@@ -9,9 +9,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ListView listaLibros;
+    private ListView listaAutos;
     private FloatingActionButton botonFlotante;
-    private AdaptadorLibros adaptadorLibros;
+    private AdaptadorAutos adaptadorAutos;
     private DatabaseManager databaseManager;
 
     @Override
@@ -19,15 +19,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listaLibros = (ListView) findViewById(R.id.listaLibros);
+        listaAutos = (ListView) findViewById(R.id.listaAutos);
         botonFlotante = (FloatingActionButton) findViewById(R.id.botonFlotante);
 
         databaseManager = new DatabaseManager();
-        adaptadorLibros = new AdaptadorLibros(this, databaseManager.getListaDeLibros());
+        adaptadorAutos = new AdaptadorAutos(this, databaseManager.getListaDeAutos());
 
-        listaLibros.setAdapter(adaptadorLibros);
+        listaAutos.setAdapter(adaptadorAutos);
 
-        databaseManager.cargarLibrosDeDB(adaptadorLibros);
+        databaseManager.cargarAutosDeDB(adaptadorAutos);
 
         botonFlotante.setOnClickListener(new View.OnClickListener() {
             @Override

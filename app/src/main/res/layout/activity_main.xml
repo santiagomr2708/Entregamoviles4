@@ -8,13 +8,13 @@
     tools:context=".MainActivity">
 
     <ListView
-        android:id="@+id/listaLibros"
+        android:id="@+id/listaAutos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@android:color/white"
+        android:background="@color/white"
+        android:divider="@color/amarillo"
         android:dividerHeight="0.5dp"
-        android:background="@android:color/black"
-        android:textColor="@android:color/white" />
+        android:textColor="@color/black" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/botonFlotante"
@@ -22,10 +22,10 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:contentDescription="@string/descripcion_boton_flotante"
+        app:backgroundTint="@android:color/holo_orange_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_input_add"
-        app:tint="@android:color/white"
-        app:backgroundTint="@android:color/holo_red_dark" />
+        app:tint="@color/black" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

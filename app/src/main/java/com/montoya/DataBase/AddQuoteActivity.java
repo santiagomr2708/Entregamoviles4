@@ -17,9 +17,9 @@ import java.util.HashMap;
 
 public class AddQuoteActivity extends AppCompatActivity {
 
-    private EditText editTextLibro;
-    private EditText editTextAutor;
-    private EditText editTextCategoria;
+    private EditText editTextMarca;
+    private EditText editTextModelo;
+    private EditText editTextVelocidad;
     private Button botonAgregar;
 
     @Override
@@ -28,9 +28,9 @@ public class AddQuoteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_quote);
 
         //bind views
-        editTextLibro = (EditText) findViewById(R.id.editTextLibro);
-        editTextAutor = (EditText) findViewById(R.id.editTextAutor);
-        editTextCategoria = (EditText) findViewById(R.id.editTextCategoria);
+        editTextMarca = (EditText) findViewById(R.id.editTextMarca);
+        editTextModelo = (EditText) findViewById(R.id.editTextModelo);
+        editTextVelocidad = (EditText) findViewById(R.id.editTextVelocidad);
         botonAgregar = (Button) findViewById(R.id.botonAgregar);
 
         //listener
@@ -38,51 +38,51 @@ public class AddQuoteActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //get text
-                String libro = editTextLibro.getText().toString();
-                String autor = editTextAutor.getText().toString();
-                String categoria = editTextCategoria.getText().toString();
+                String Marca = editTextMarca.getText().toString();
+                String Modelo = editTextModelo.getText().toString();
+                String Velocidad = editTextVelocidad.getText().toString();
 
                 //check if empty
-                if (libro.isEmpty()){
-                    editTextLibro.setError("No puede estar vacío");
+                if (Marca.isEmpty()){
+                    editTextMarca.setError("No puede estar vacío");
                     return;
                 }
-                if (autor.isEmpty()){
-                    editTextAutor.setError("No puede estar vacío");
+                if (Modelo.isEmpty()){
+                    editTextModelo.setError("No puede estar vacío");
                     return;
                 }
-                if (categoria.isEmpty()){
-                    editTextCategoria.setError("No puede estar vacío");
+                if (Velocidad.isEmpty()){
+                    editTextVelocidad.setError("No puede estar vacío");
                     return;
                 }
 
                 //add to database
-                agregarLibroABD(libro, autor, categoria);
+                agregarAutoABD(Marca, Modelo, Velocidad);
             }
         });
     }
 
-    private void agregarLibroABD(String libro, String autor, String categoria) {
+    private void agregarAutoABD(String Marca, String Modelo, String Velocidad) {
         //create a hashmap
-        HashMap<String, Object> libroHashmap = new HashMap<>();
-        libroHashmap.put("libro", libro);
-        libroHashmap.put("autor", autor);
-        libroHashmap.put("categoria", categoria);
+        HashMap<String, Object> AutosHashmap = new HashMap<>();
+        AutosHashmap.put("Marca", Marca);
+        AutosHashmap.put("Modelo", Modelo);
+        AutosHashmap.put("Velocidad", Velocidad);
 
         //instantiate database connection
         FirebaseDatabase baseDeDatos = FirebaseDatabase.getInstance();
-        DatabaseReference referenciaLibros = baseDeDatos.getReference("libros");
+        DatabaseReference referenciaAutos = baseDeDatos.getReference("Autos");
 
-        String clave = referenciaLibros.push().getKey();
-        libroHashmap.put("clave", clave);
+        String clave = referenciaAutos.push().getKey();
+        AutosHashmap.put("clave", clave);
 
-        referenciaLibros.child(clave).setValue(libroHashmap).addOnCompleteListener(new OnCompleteListener<Void>() {
+        referenciaAutos.child(clave).setValue(AutosHashmap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 Toast.makeText(AddQuoteActivity.this, "Agregado", Toast.LENGTH_SHORT).show();
-                editTextLibro.getText().clear();
-                editTextAutor.getText().clear();
-                editTextCategoria.getText().clear();
+                editTextMarca.getText().clear();
+                editTextModelo.getText().clear();
+                editTextVelocidad.getText().clear();
             }
         });
     }

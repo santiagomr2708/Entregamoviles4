@@ -7,47 +7,47 @@
     tools:context=".AddQuoteActivity">
 
     <EditText
-        android:id="@+id/editTextLibro"
+        android:id="@+id/editTextMarca"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
+        android:hint="Nombre de la Marca"
         android:padding="12dp"
-        android:hint="Nombre del libro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextAutor"
+        android:id="@+id/editTextModelo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
+        android:hint="Modelo del Auto"
         android:padding="12dp"
-        android:hint="Autor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextLibro" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextMarca" />
 
     <EditText
-        android:id="@+id/editTextCategoria"
+        android:id="@+id/editTextVelocidad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
+        android:hint="Velocidad"
         android:padding="12dp"
-        android:hint="Categoría"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextAutor" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextModelo" />
 
     <Button
         android:id="@+id/botonAgregar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Agregar"
+        app:backgroundTint="@android:color/holo_orange_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:backgroundTint="@android:color/holo_red_dark"
-        app:tint="@android:color/white"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCategoria" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextVelocidad"
+        app:tint="@android:color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

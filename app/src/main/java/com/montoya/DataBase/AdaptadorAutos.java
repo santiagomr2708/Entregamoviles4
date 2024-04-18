@@ -9,13 +9,13 @@ import androidx.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class AdaptadorLibros extends ArrayAdapter<HashMap<String, String>> {
+public class AdaptadorAutos extends ArrayAdapter<HashMap<String, String>> {
 
-    private ArrayList<HashMap<String, String>> listaDeLibros;
+    private ArrayList<HashMap<String, String>> listaDeAutos;
 
-    public AdaptadorLibros(Context context, ArrayList<HashMap<String, String>> listaDeLibros) {
-        super(context, android.R.layout.simple_list_item_2, android.R.id.text1, listaDeLibros);
-        this.listaDeLibros = listaDeLibros;
+    public AdaptadorAutos(Context context, ArrayList<HashMap<String, String>> listaDeAutos) {
+        super(context, android.R.layout.simple_list_item_2, android.R.id.text1, listaDeAutos);
+        this.listaDeAutos = listaDeAutos;
     }
 
     @NonNull
@@ -25,8 +25,8 @@ public class AdaptadorLibros extends ArrayAdapter<HashMap<String, String>> {
         TextView texto1 = (TextView) vista.findViewById(android.R.id.text1);
         TextView texto2 = (TextView) vista.findViewById(android.R.id.text2);
 
-        texto1.setText(listaDeLibros.get(posicion).get("libro"));
-        texto2.setText(listaDeLibros.get(posicion).get("autor") + ", " + listaDeLibros.get(posicion).get("categoria"));
+        texto1.setText(listaDeAutos.get(posicion).get("Marca"));
+        texto2.setText(listaDeAutos.get(posicion).get("Modelo") + ", " + listaDeAutos.get(posicion).get("Velocidad"));
 
         return vista;
     }
